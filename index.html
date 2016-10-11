@@ -7,6 +7,178 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style type="text/css">
+        html { 
+              background: url(images/back2.jpg) no-repeat center center fixed; 
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+            }
+    </style>
+     <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var ENG = [{"logo" : "link" , "name" : "Arsenal"} , {"logo" : "link" , "name" : "Chelsea"} , {"logo" : "link" , "name" : "Man. City"},{"logo" : "link" , "name" : "Man. United"} ] ;
+            var ESP = [{"logo" : "link" , "name" : "Athletico"} , {"logo" : "link" , "name" : "Barcelona"} , {"logo" : "link" , "name" : "Real Madrid"},{"logo" : "link" , "name" : "Sevilla"} , {"logo" : "link" , "name" : "Velencia"}] ;
+            var GER = [{"logo" : "link" , "name" : "Bayern"} , {"logo" : "link" , "name" : "Leverkusen"} , {"logo" : "link" , "name" : "Mönchengladbach"},{"logo" : "link" , "name" : "Wolfsburg"} ] ;
+            var POR = [{"logo" : "link" , "name" : "Benfica"} , {"logo" : "link" , "name" : "Porto"}] ;
+            var RUS = [{"logo" : "link" , "name" : "CSKA Moskva"} , {"logo" : "link" , "name" : "Zenit"}] ;
+            var UKR = [{"logo" : "link" , "name" : "Dynamo Kyiv"} , {"logo" : "link" , "name" : "Shakhtar Donetsk"}] ;
+            var ITA = [{"logo" : "link" , "name" : "Rome"} , {"logo" : "link" , "name" : "Juventus"}] ;
+            var FRA = [{"logo" : "link" , "name" : "Lyon"} , {"logo" : "link" , "name" : "Paris"}] ;
+            var KAZ = [{"logo" : "link" , "name" : "Astana"}] ;
+            var BLR = [{"logo" : "link" , "name" : "Bate"}] ;
+            var GRE = [{"logo" : "link" , "name" : "Olympiacos"}] ;
+            var CRO = [{"logo" : "link" , "name" : "Dinamo Zagreb"}] ;
+            var TUR = [{"logo" : "link" , "name" : "Galatasaray"}] ;
+            var BEL = [{"logo" : "link" , "name" : "Gent"}] ;
+            var ISR = [{"logo" : "link" , "name" : "M. Tel-Aviv"}] ;
+            var SWE = [{"logo" : "link" , "name" : "Malmö"}] ;
+            var NED = [{"logo" : "link" , "name" : "PSV"}] ;
+            
+            var GroupA = [];
+            var GroupB = [];
+            var GroupC = [];
+            var GroupD = [];
+            var GroupE = [];
+            var GroupF = [];
+            var GroupG = [];
+            var GroupH = [];
+            
+            console.log(ENG.length) ;
+            
+            var m = ["test" , "GroupA", "GroupB", "GroupC", "GroupD", "GroupE", "GroupF", "GroupG", "GroupH"]
+            randomAlot(ENG , 4) ;
+            randomAlot(GER , 4) ;
+            randomAlot(ESP , 5) ;
+            
+            var permArr = [],
+                usedChars = [],
+                rtarr = [] ;
+            
+            function permute(input) {
+                  var i, ch;
+                  for (i = 0; i < input.length; i++) {
+                    ch = input.splice(i, 1)[0];
+                    usedChars.push(ch);
+                    if (input.length == 0) {
+                      permArr.push(usedChars.slice());
+                    }
+                    permute(input);
+                    input.splice(i, 0, ch);
+                    usedChars.pop();
+                  }
+                  return permArr ;
+                };
+            
+//            var test = [1,2,3,4] ;
+//            console.log("randomly generated is : "  + randomPermute(test) );
+//            for testing purpose
+            function randomPermute(input)
+            {
+                var perm = permute(input) ;
+                // got all the permutaion in it
+                var n = input.length ;
+                console.log("length of permutation is : " + perm[0]) ;
+                var r = Math.floor(Math.random()*(n*n)) ;
+                rtarr = perm[r] ;
+                return rtarr ;
+            }
+            
+            
+            function randomAlot(country,n)
+            {
+                var dup = [] ;
+                for(var i = 0 ; i < n ; i++)
+                    {
+                        var rand = Math.floor((Math.random()*8)+1) ;
+//                        console.log("check of dup array : " + $.inArray(rand , dup)) ;
+                        if(($.inArray(rand , dup)) == -1) // not present
+                            {
+                                dup.push(rand) ;
+                            }
+                        else{
+//                            console.log("duplicate") ;
+                            rand = rand + 1 ;
+                            if(rand == 9)
+                                rand = 1 ;
+                            dup.push(rand) ;
+                        } 
+                    }
+                for(var i = 0 ; i < n ; i++)
+                    {
+                        pushInGroup(country[i] , dup[i]) ;
+//                        console.log("group number  :  " + dup[i]) ;
+                    }
+                // now we done assign group number to the country
+                
+            }
+            
+            
+            function pushInGroup(country , number)
+            {
+                console.log("in push function") ;
+                console.log(country["name"] + " --->  " + number) ;
+                if(number == 1)
+                    {
+                        console.log("in 1 if") ;
+                        GroupA.push(country) ;
+                    }
+                else if(number == 2)
+                    {
+                        GroupB.push(country) ;
+                    }
+                else if(number == 3)
+                    {
+                        GroupC.push(country) ;
+                    }
+                else if(number == 4)
+                    {
+                        GroupD.push(country) ;
+                    }
+                else if(number == 5)
+                    {
+                        GroupE.push(country) ;
+                    }
+                else if(number == 6)
+                    {
+                        GroupF.push(country) ;
+                    }
+                else if(number == 7)
+                    {
+                        GroupG.push(country) ;
+                    }
+                else
+                    {
+                        GroupH.push(country) ;
+                    }
+            }
+            
+            function printGroup(group)
+            {
+                console.log("printing group..................") ;
+                console.log(group) ;
+                console.log("group length : " + group.length) ;
+                for(var i = 0 ; i < 4 ; i++)
+                    {
+                        console.log(group[i]) ;
+                    }
+            }
+            
+//            printGroup(GroupA) ;
+//            printGroup(GroupB) ;
+//            printGroup(GroupC) ;
+//            printGroup(GroupD) ;
+//            printGroup(GroupE) ;
+//            printGroup(GroupF) ;
+//            printGroup(GroupG) ;
+//            printGroup(GroupH) ;
+            
+        }) ;
+    </script>
     </head>
     <body>
          <!--Import jQuery before materialize.js-->
@@ -15,7 +187,7 @@
         
         
         <div class="container">
-            <a class="btn">this is bu</a>
+           
         </div>
     </body>
 </html>
