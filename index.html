@@ -15,6 +15,15 @@
               -o-background-size: cover;
               background-size: cover;
             }
+        #image{
+            position: relative ;
+            top: 25px ;
+            left: 40% ;
+        }
+        .ial{
+            position: relative ;
+            left: 20% ;
+        }
     </style>
      <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -157,6 +166,165 @@
                     }
             }
             
+            
+            
+            // -----------------------------  now for two countries
+            var twoteams = [POR , RUS , ITA , FRA , UKR] ;
+            console.log("two teams : " + twoteams + "length  : " + twoteams.length) ;
+            var arr = [0,1,2,3,4] ;
+            var parr = randomPermute(arr) ;
+            for(var i = 0 ; i < 5 ; i++)
+                {
+                    console.log("randomly permuted : " + parr[i]) ;
+                    tryGroup(twoteams[parr[i]]) ;
+                }
+            
+            // push in group 
+           function tryGroup(country)
+            {
+                var o = 0 ;
+                console.log(country + "length is : " + country.length) ;
+                while(1)
+                    {
+                        if(GroupA.length < 4)
+                            {
+                                if(o == 0)
+                                    {
+                                        pushInGroup(country[0] , 1) ;
+                                        o = 1 ;
+                                    }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 1) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupB.length < 4)
+                            {
+                                if(o == 0)
+                                    {
+                                        pushInGroup(country[0] , 2) ;
+                                        o = 1 ;
+                                    }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 2) ;
+                                        break ;
+                                    }
+                            }
+                         if(GroupC.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 3) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 3) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupD.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 4) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 4) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupE.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 5) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 5) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupF.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 6) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 6) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupG.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 7) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 7) ;
+                                        break ;
+                                    }
+                            }
+                        if(GroupH.length < 4)
+                            {
+                                if(o == 0)
+                                   {
+                                        pushInGroup(country[0] , 8) ;
+                                        o = 1 ;
+                                   }
+                                else
+                                    {
+                                        pushInGroup(country[1] , 8) ;
+                                        break ;
+                                    }
+                            }
+                    }
+                
+            }
+            
+            // now turn for one country
+            
+            var oneteam = [NED , SWE , ISR , BEL , TUR , CRO , GRE , BLR , KAZ] ;
+            
+            for(var i = 0 ; i < 9 ; i++)
+                {
+                    console.log(oneteam[i]) ;
+                    tryForOne(oneteam[i]) ;
+                }
+            
+            function tryForOne(country)
+            {
+                if(GroupA.length < 4)
+                    pushInGroup(country[0] , 1) ;
+                else if(GroupB.length < 4)
+                    pushInGroup(country[0] , 2) ;
+                else if(GroupC.length < 4)
+                    pushInGroup(country[0] , 3) ;
+                else if(GroupD.length < 4)
+                    pushInGroup(country[0] , 4) ;
+                else if(GroupE.length < 4)
+                    pushInGroup(country[0] , 5) ;
+                else if(GroupF.length < 4)
+                    pushInGroup(country[0] , 6) ;
+                else if(GroupG.length < 4)
+                    pushInGroup(country[0] , 7) ;
+                else
+                    pushInGroup(country[0] , 8) ;
+                    
+            }
+            
             function printGroup(group)
             {
                 console.log("printing group..................") ;
@@ -168,14 +336,31 @@
                     }
             }
             
-//            printGroup(GroupA) ;
-//            printGroup(GroupB) ;
-//            printGroup(GroupC) ;
-//            printGroup(GroupD) ;
-//            printGroup(GroupE) ;
-//            printGroup(GroupF) ;
-//            printGroup(GroupG) ;
-//            printGroup(GroupH) ;
+            console.log("\n\n\\n\n\n\n\n\\n\n\n\n\n\\n\n\n\n\n\n\n\n") ;
+            
+            printGroup(GroupA) ;
+            printGroup(GroupB) ;
+            printGroup(GroupC) ;
+            printGroup(GroupD) ;
+            printGroup(GroupE) ;
+            printGroup(GroupF) ;
+            printGroup(GroupG) ;
+            printGroup(GroupH) ;
+            
+            console.log(GroupA[0]["logo"] + "  " + GroupA[0]["name"]) ;
+            
+            
+            
+            // put image in the divsion ;
+            
+            // Group A
+            var htmla = "<ul>" ; 
+            for(var i = 0 ; i < 4 ; i++)
+                {
+                    htmla = htmla + '<li class="white-text"><img src='+ GroupA[i]["logo"] + ' align="left" class="ial"><span><h5>' + GroupA[i]["name"] + '</h5></span></li>' ;
+                }
+            htmla = htmla + "</ul>" ;
+            $("#a").html(htmla) ;
             
         }) ;
     </script>
@@ -186,8 +371,44 @@
       <script type="text/javascript" src="js/materialize.min.js"></script>
         
         
-        <div class="container">
-           
+           <div id="image">
+               <img src="images/logo.png" class="center" height="220px" width="220px">
+            </div>
+            <div class="row">
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text"><b>GroupA</b></h4>
+                    <div id="a">
+<!--
+                        <ul>
+                            <li class="white-text"><img src="http://img.uefa.com/imgml/TP/teams/logos/32x32/2601945.png" align="left" class="ial"><span><h5>Barecelone</h5></span></li>
+                        </ul>
+-->
+                    </div>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupB</h4>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupC</h4>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupD</h4>
+                </div>
+                
+                <div class="row">
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupE</h4>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupF</h4>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupG</h4>
+                </div>
+                <div class="col s6 m6 l3 center">
+                    <h4 class="header white-text">GroupH</h4>
+                </div>
+            </div>
         </div>
     </body>
 </html>
